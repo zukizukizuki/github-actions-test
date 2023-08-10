@@ -24,8 +24,8 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: covarage
-          path: backend/covarage/**
+          name: coverage
+          path: backend/coverage/**
           retention-days: 5
 
       - uses: actions/upload-artifact@v3
