@@ -56,17 +56,17 @@ jobs:
         key: ${{ secrets.BACKEND_SERVER_KNOWN_HOSTS }}
         known_hosts: ${{ secrets.BACKEND_SERVER_SSH_KEY }}
 
-    - run: scp -i dist/index.js ${SERVER_USER}@${SERVER_IP}:~/index.js
+    - run: scp dist/index.js ${SERVER_USER}@${SERVER_IP}:~/index.js
       env:
         SERVER_USER: ${{ secrets.BACKEND_SERVER_USER }}
         SERVER_IP: ${{ secrets.BACKEND_SERVER_IP }}
 
-    - run: ssh -i ${SERVER_USER}@${SERVER_IP} sudo systemctl start backend
+    - run: ssh ${SERVER_USER}@${SERVER_IP} sudo systemctl start backend
       env:
         SERVER_USER: ${{ secrets.BACKEND_SERVER_USER }}
         SERVER_IP: ${{ secrets.BACKEND_SERVER_IP }}
 
-    - run: ssh -i ${SERVER_USER}@${SERVER_IP} sudo systemctl status backend
+    - run: ssh ${SERVER_USER}@${SERVER_IP} sudo systemctl status backend
       env:
         SERVER_USER: ${{ secrets.BACKEND_SERVER_USER }}
         SERVER_IP: ${{ secrets.BACKEND_SERVER_IP }}
