@@ -19,7 +19,7 @@ app.use(cors({ origin: CORS_ORIGIN }))
 app.get('/api/health', async (req, res) => {
   res.json({
     status: 'OK',
-    version: 2
+    version: 3
   })
 })
 
