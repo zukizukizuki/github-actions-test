@@ -56,7 +56,7 @@ jobs:
         key: ${{ secrets.BACKEND_SERVER_KNOWN_HOSTS }}
         known_hosts: ${{ secrets.BACKEND_SERVER_SSH_KEY }}
 
-    - run: scp dist/index.js ${SERVER_USER}@${SERVER_IP}:~/index.js
+    - run: expect -c "scp dist/index.js ${SERVER_USER}@${SERVER_IP}:~/index.js expect \n {"(yes/no)?" {send "yes\n"}"
       env:
         SERVER_USER: ${{ secrets.BACKEND_SERVER_USER }}
         SERVER_IP: ${{ secrets.BACKEND_SERVER_IP }}
