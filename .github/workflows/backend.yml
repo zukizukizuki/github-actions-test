@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-  schedule:
-    - cron: "10 12 * * *"
+  # schedule:
+  #   - cron: "10 12 * * *"
 
 defaults:
   run:
@@ -46,6 +46,11 @@ jobs:
     if: github.event_name == 'push'
     runs-on: ubuntu:latest
     steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: dist
+        path: backend/dist
+
     - uses: shimataro/ssh-key-action@v2
       with:
         key: ${{ secrets.BACKEND_SERVER_KNOWN_HOSTS }}
