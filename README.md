@@ -8,4 +8,3 @@
 - CI/CDを組んでおり、mainブランチにpushされたら稼働を実施する
   - backendのCI/CDはbuildとdeployを実行する
   - frontendのCI/CDはdeployのみ実行する
-- 
