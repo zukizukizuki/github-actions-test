@@ -56,7 +56,9 @@ jobs:
         key: ${{ secrets.BACKEND_SERVER_KNOWN_HOSTS }}
         known_hosts: ${{ secrets.BACKEND_SERVER_SSH_KEY }}
 
-    - run: expect -c "scp dist/index.js ${SERVER_USER}@${SERVER_IP}:~/index.js expect \n {"yes/no" {send "yes\n"}"
+    # expectがないので大人しくrsyncを使う
+    # - run: expect -c "scp dist/index.js ${SERVER_USER}@${SERVER_IP}:~/index.js expect \n {"yes/no" {send "yes\n"}"
+    - run: rsync -v dist/index.js ${SERVER_USER}@${SERVER_IP}:~/index.js
       env:
         SERVER_USER: ${{ secrets.BACKEND_SERVER_USER }}
         SERVER_IP: ${{ secrets.BACKEND_SERVER_IP }}
