@@ -53,8 +53,8 @@ jobs:
 
     - uses: shimataro/ssh-key-action@v2
       with:
-        key: ${{ secrets.BACKEND_SERVER_KNOWN_HOSTS }}
-        known_hosts: ${{ secrets.BACKEND_SERVER_SSH_KEY }}
+        key: ${{ secrets.BACKEND_SERVER_SSH_KEY }}
+        known_hosts: ${{ secrets.BACKEND_SERVER_KNOWN_HOSTS  }}
 
     # FingerPrintがでるので一度だけ手動ログインを実施
     #- run: scp dist/index.js ${SERVER_USER}@${SERVER_IP}:~/index.js
