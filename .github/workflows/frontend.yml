@@ -18,5 +18,5 @@ jobs:
     - uses: actions/checkout@v3
     - run: aws s3 sync . s3://github-actions-storage-0001 --exact-timestamps --region ap-northeast-1
       env:
-        AWS_ACCESS_KEY_ID: ${{ FRONTEND_AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY_ID: ${{ FRONTEND_AWS_SECRET_ACCESS_KEY_ID }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.FRONTEND_AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY_ID: ${{ secrets.FRONTEND_AWS_SECRET_ACCESS_KEY_ID }}
