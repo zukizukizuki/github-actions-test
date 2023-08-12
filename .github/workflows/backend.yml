@@ -56,9 +56,9 @@ jobs:
         key: ${{ secrets.BACKEND_SERVER_KNOWN_HOSTS }}
         known_hosts: ${{ secrets.BACKEND_SERVER_SSH_KEY }}
 
-    # expectがないので大人しくrsyncを使う
-    # - run: expect -c "scp dist/index.js ${SERVER_USER}@${SERVER_IP}:~/index.js expect \n {"yes/no" {send "yes\n"}"
-    - run: rsync -v dist/index.js ${SERVER_USER}@${SERVER_IP}:~/index.js
+    # FingerPrintがでるので一度だけ手動ログインを実施
+    - run: scp dist/index.js ${SERVER_USER}@${SERVER_IP}:~/index.js
+    # - run: rsync -v dist/index.js ${SERVER_USER}@${SERVER_IP}:~/index.js
       env:
         SERVER_USER: ${{ secrets.BACKEND_SERVER_USER }}
         SERVER_IP: ${{ secrets.BACKEND_SERVER_IP }}
