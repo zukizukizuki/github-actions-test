@@ -57,8 +57,8 @@ jobs:
         known_hosts: ${{ secrets.BACKEND_SERVER_SSH_KEY }}
 
     # FingerPrintがでるので一度だけ手動ログインを実施
-    - run: scp dist/index.js ${SERVER_USER}@${SERVER_IP}:~/index.js
-    # - run: rsync -v dist/index.js ${SERVER_USER}@${SERVER_IP}:~/index.js
+    # - run: scp dist/index.js ${SERVER_USER}@${SERVER_IP}:~/index.js
+    - run: rsync -v dist/index.js ${SERVER_USER}@${SERVER_IP}:~/index.js
       env:
         SERVER_USER: ${{ secrets.BACKEND_SERVER_USER }}
         SERVER_IP: ${{ secrets.BACKEND_SERVER_IP }}
